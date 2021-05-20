@@ -1,0 +1,41 @@
+#GRIP TASK-1 Prediction using Supervised ML 
+
+#NAME:- Hitesh Lalwani
+
+#GET OR LOAD THE DATA FROM THE SOURCE AND ASSIGN IT TO A SUITABLE VARIABLE
+my_data <- read.csv("https://raw.githubusercontent.com/AdiPersonalWorks/Random/master/student_scores%20-%20student_scores.csv",sep =",",header = TRUE)
+
+#CHECK THE VALUES OF DATASET
+str(my_data)
+dim(my_data)
+    
+#ASSIGN THE VALUE TO THE VARIBLES PRESENT IN THE DATASET
+Hours<-my_data$Hours
+Scores<-my_data$Scores
+    
+#TO CHECK THE LINEARITY WE PLOT A GRAPH
+plot(Hours,Scores)
+    
+#BUILD A MODEL FOR my_data
+my_model = lm (Scores~Hours,data = my_data)
+    
+#TO GET THE REGRESSION COEFFICIENT
+my_model
+    
+#TO GET THE SUMMARY OF THE MODEL
+summary(my_model)
+    
+#PLOTTING A REGRESSION LINE ON GRAPH TO SHOW THE RELATIONSHIP
+abline(lm (Scores~Hours,data = my_data),col='red',lwd =1)
+    
+#TO GET THE PREDICTED VALUE WE HAVE TO GIVE THE VALUE OF INDEPENDENT VARIABLE VALUE
+ask_data = data.frame(Hours = c(9.25))
+    
+#TO GET THE PREDICTED VALUE 
+pred_score = predict(my_model,ask_data)
+pred_score
+    
+#CHECKING THE ASSUMPTIONS OF THE MODEL BY DIAGONOSTIC PLOTTING
+plot(my_model)
+    
+    
